@@ -1,0 +1,26 @@
+---
+// Props
+interface Props {
+  images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props as Props;
+---
+
+<section class="gallery" style="padding: 20px;">
+  <h2>Our Wedding Photography Gallery</h2>
+  <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    {images.map((image) => (
+      <div class="gallery-item" style="overflow: hidden; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <img src={image.src} alt={image.alt} style="width: 100%; height: auto; display: block;" />
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Add your custom styles here, preferably in a separate CSS file */
+  .gallery {
+    /* Example Styles */
+  }
+</style>

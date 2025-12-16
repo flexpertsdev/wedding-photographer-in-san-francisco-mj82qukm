@@ -1,0 +1,29 @@
+---
+// Props
+interface Props {
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+  altText: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+const { title, subtitle, imageSrc, altText, buttonText, buttonLink } = Astro.props as Props;
+---
+
+<section class="hero" style="position: relative; overflow: hidden; height: 600px; display: flex; justify-content: center; align-items: center; text-align: center; color: white;">
+  <img src={imageSrc} alt={altText} style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.6);" />
+  <div class="hero-content" style="padding: 20px; max-width: 800px;">
+    <h1 style="font-size: 3em; margin-bottom: 10px;">{title}</h1>
+    <p style="font-size: 1.5em; margin-bottom: 20px;">{subtitle}</p>
+    <a href={buttonLink} style="background-color: #e44d26; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">{buttonText}</a>
+  </div>
+</section>
+
+<style>
+  /* Add your custom styles here, preferably in a separate CSS file */
+  .hero {
+    /* Example Styles */
+  }
+</style>

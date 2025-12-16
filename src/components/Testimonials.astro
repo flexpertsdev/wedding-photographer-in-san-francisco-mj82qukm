@@ -1,0 +1,48 @@
+---
+// Props
+interface Testimonial {
+  quote: string;
+  author: string;
+  authorImage: string;
+  authorTitle: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props as Props;
+---
+
+<section class="testimonials" style="padding: 40px; text-align: center; background-color: #f9f9f9;">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-slider" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px;">
+    {testimonials.map((testimonial) => (
+      <div class="testimonial-item" style="flex: 0 0 80%; min-width: 80%; padding: 30px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); margin-right: 20px; scroll-snap-align: start; text-align: left;">
+        <p style="font-style: italic; margin-bottom: 15px;">"{testimonial.quote}"</p>
+        <div class="author" style="display: flex; align-items: center;">
+          <img src={testimonial.authorImage} alt={testimonial.author} style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px; object-fit: cover;" />
+          <div>
+            <p style="font-weight: bold; margin-bottom: 5px;">{testimonial.author}</p>
+            <p style="font-size: 0.9em; color: #777;">{testimonial.authorTitle}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Add your custom styles here, preferably in a separate CSS file */
+  .testimonials {
+    /* Example Styles */
+  }
+  .testimonial-slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  }
+  .testimonial-slider {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+</style>

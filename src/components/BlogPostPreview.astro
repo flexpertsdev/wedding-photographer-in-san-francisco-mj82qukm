@@ -1,0 +1,30 @@
+---
+// Props
+interface Props {
+  title: string;
+  excerpt: string;
+  imageUrl: string;
+  imageAlt: string;
+  slug: string;
+  date: string;
+}
+
+const { title, excerpt, imageUrl, imageAlt, slug, date } = Astro.props as Props;
+---
+
+<div class="blog-post-preview" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
+  <img src={imageUrl} alt={imageAlt} style="width: 100%; height: 200px; object-fit: cover;" />
+  <div style="padding: 20px;">
+    <h3 style="font-size: 1.3em; margin-bottom: 10px;">{title}</h3>
+    <p style="color: #777; font-size: 0.9em; margin-bottom: 15px;">{date}</p>
+    <p style="margin-bottom: 15px;">{excerpt}</p>
+    <a href={`/blog/${slug}`} style="background-color: #e44d26; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Read More</a>
+  </div>
+</div>
+
+<style>
+  /* Add your custom styles here, preferably in a separate CSS file */
+  .blog-post-preview {
+    /* Example Styles */
+  }
+</style>

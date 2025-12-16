@@ -1,0 +1,28 @@
+---
+interface Props {
+  city: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+}
+
+const { city, description, imageUrl, imageAlt } = Astro.props as Props;
+---
+
+<section class="location-block" style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 20px;">
+  <div style="display: flex; align-items: center;">
+    <img src={imageUrl} alt={imageAlt} style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-right: 20px;">
+    <div>
+      <h2>Wedding Photographer in {city}</h2>
+      <p>{description}</p>
+      <a href={`/contact?location=${city}`} style="background-color: #e44d26; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px;">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Add your custom styles here, preferably in a separate CSS file */
+  .location-block {
+    /* Example Styles */
+  }
+</style>
